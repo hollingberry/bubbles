@@ -13,7 +13,7 @@ namespace :symlinks do
     # Remove all symlinked dotfiles in $HOME
     dotfiles.each do |dotfile|
       puts "Removing ~/#{File.basename(dotfile)}"
-      FileUtils.rm(File.expand_path("~/#{File.basename(dotfile)}"))
+      FileUtils.mv(File.expand_path("~/#{File.basename(dotfile)}"), File.expand_path('~/.Trash'))
     end
   end
 
