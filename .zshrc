@@ -1,8 +1,8 @@
 # Setup oh-my-zsh
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="calliope"
-source $ZSH/oh-my-zsh.sh
 plugins=(git)
+source $ZSH/oh-my-zsh.sh
 
 # Enable line comments
 setopt interactivecomments
