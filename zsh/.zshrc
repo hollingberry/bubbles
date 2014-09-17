@@ -4,6 +4,10 @@ ZSH_THEME="calliope"
 plugins=(brew bundler cabal gem gitfast)
 source $ZSH/oh-my-zsh.sh
 
+# Vim line navigation
+bindkey -v
+bindkey -M viins 'jj' vi-cmd-mode
+
 # Enable line comments
 setopt interactivecomments
 
