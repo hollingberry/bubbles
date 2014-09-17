@@ -20,6 +20,11 @@ set noru
 set laststatus=0
 set noshowmode
 
+" backup settings
+set nobackup
+set nowritebackup
+set noswapfile
+
 " don't wrap lines
 set nowrap
  
