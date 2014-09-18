@@ -1,25 +1,25 @@
 require 'fileutils'
 
-HOME = ENV['HOME']
+task :default => 'symlinks:update'
 
 namespace :symlinks do
+  task :update => [:clean, :create]
+
   task :create do
     # Symlink each dotfile to $HOME
     dotfiles.each do |dotfile|
-      ln_s File.expand_path(dotfile), "#{HOME}/#{File.basename dotfile}"
+      ln_s File.expand_path(dotfile), "#{ENV['HOME']}/#{File.basename dotfile}"
     end
   end
 
   task :clean do
-    # Remove all symlinked dotfiles in $HOME
+    # Remove all dotfiles in $HOME that also exist here
     dotfiles.each do |dotfile|
-      if File.exists? "#{HOME}/#{File.basename dotfile}"
-        rm "#{HOME}/#{File.basename dotfile}", force: true
+      if File.exists? "#{ENV['HOME']}/#{File.basename dotfile}"
+        rm "#{ENV['HOME']}/#{File.basename dotfile}", force: true
       end
     end
   end
-
-  task :update => [:clean, :create]
 end
 
 def dotfiles
