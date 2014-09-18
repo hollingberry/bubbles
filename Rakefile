@@ -6,22 +6,30 @@ namespace :symlinks do
   task :update => [:clean, :create]
 
   task :create do
-    # Symlink each dotfile to $HOME
-    dotfiles.each do |dotfile|
-      ln_s File.expand_path(dotfile), "#{ENV['HOME']}/#{File.basename dotfile}"
+    # Symlink each file to its associated destination directory
+    symlinks.each do |files, dest|
+      files.each do |file|
+        ln_s File.expand_path(file), "#{dest}/#{File.basename(file)}"
+      end
     end
   end
 
   task :clean do
-    # Remove all dotfiles in $HOME that also exist here
-    dotfiles.each do |dotfile|
-      if File.exists? "#{ENV['HOME']}/#{File.basename dotfile}"
-        rm "#{ENV['HOME']}/#{File.basename dotfile}", force: true
+    # Remove each file from its associated destination directory
+    symlinks.each do |files, dest|
+      files.each do |file|
+        if File.exists? "#{dest}/#{File.basename(file)}"
+          rm "#{dest}/#{File.basename(file)}", force: true
+        end
       end
     end
   end
 end
 
-def dotfiles
-  Dir.glob('**/.*').select { |object| File.file?(object) }
+def symlinks
+  {
+    Dir.glob('**/.*', File::FNM_DOTMATCH).select { |file| File.file? file } => ENV['HOME'],
+    Dir.glob('zsh/themes/*.zsh-theme') => "#{ENV['HOME']}/.oh-my-zsh/custom"
+  }
 end
+
