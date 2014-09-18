@@ -4,6 +4,9 @@ execute pathogen#infect()
 " enable vim features
 set nocompatible
 
+" auto indentation
+filetype plugin indent on
+
 " map <esc> to jj
 inoremap jj <esc>
 
