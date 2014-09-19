@@ -28,8 +28,8 @@ end
 
 def symlinks
   {
-    Dir.glob('**/.*', File::FNM_DOTMATCH).select { |file| File.file? file } => ENV['HOME'],
-    Dir.glob('zsh/themes/*.zsh-theme') => "#{ENV['HOME']}/.oh-my-zsh/custom"
+    Dir['**/.*'].select { |file| File.file? file } => ENV['HOME'],
+    Dir['zsh/themes/*.zsh-theme'] => "#{ENV['HOME']}/.oh-my-zsh/custom"
   }
 end
 
