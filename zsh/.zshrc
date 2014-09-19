@@ -17,6 +17,9 @@ alias rm='trash'
 # Github CLI (github.com/github/hub)
 alias git='hub'
 
+# On a QWERTY keyboard, "quit" is faster to type than "exit"
+alias quit='exit'
+
 # Remove formatting
 function rmf {
   pbpaste | pbcopy
