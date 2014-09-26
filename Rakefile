@@ -1,5 +1,3 @@
-require 'fileutils'
-
 task :default => 'symlinks:update'
 
 namespace :symlinks do
