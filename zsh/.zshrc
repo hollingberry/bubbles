@@ -20,6 +20,9 @@ alias git='hub'
 # On a QWERTY keyboard, "quit" is faster to type than "exit"
 alias quit='exit'
 
+# Vim-style quit
+alias :q='exit'
+
 # Remove formatting
 function rmf {
   pbpaste | pbcopy
