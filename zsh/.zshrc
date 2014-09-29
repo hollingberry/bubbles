@@ -23,6 +23,9 @@ alias quit='exit'
 # Vim-style quit
 alias :q='exit'
 
+# Mathematica console
+alias math='/Applications/Mathematica.app/Contents/MacOS/MathKernel'
+
 # Remove formatting
 function rmf {
   pbpaste | pbcopy
