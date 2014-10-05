@@ -48,7 +48,7 @@ function clear {
 
 # Launch the iOS Simulator
 function emulator {
-  open "/Applications/Xcode6-Beta.app/Contents/Developer/Applications/iOS Simulator.app"
+  open "/Applications/Xcode.app/Contents/Developer/Applications/iOS Simulator.app"
 }
 
 # Serve the working directory at localhost:8000
