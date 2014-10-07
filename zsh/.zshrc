@@ -8,6 +8,12 @@ source $ZSH/oh-my-zsh.sh
 bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
 
+# Search history matching entered text
+bindkey '\eOA' history-beginning-search-backward
+bindkey '\e[A' history-beginning-search-backward
+bindkey '\eOB' history-beginning-search-forward
+bindkey '\e[B' history-beginning-search-forward
+
 # Enable line comments
 setopt interactivecomments
 
