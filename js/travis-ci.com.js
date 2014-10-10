@@ -1,3 +1,5 @@
-window.setTimeout(function () {
-  document.querySelector('#right').style.display = 'none';
-}, 500);
+$(document).ready(function () {
+  window.setTimeout(function () {
+    document.querySelector('#right').style.display = 'none';
+  }, 500);
+});
