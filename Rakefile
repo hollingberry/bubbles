@@ -1,8 +1,10 @@
 task :default => 'symlinks:update'
 
 namespace :symlinks do
+  desc 'Update the symlinks'
   task :update => [:clean, :create]
 
+  desc 'Create each symlinks'
   task :create do
     # Symlink each file to its associated destination directory
     symlinks.each do |files, dest|
@@ -12,6 +14,7 @@ namespace :symlinks do
     end
   end
 
+  desc 'Delete each symlinks'
   task :clean do
     # Remove each file from its associated destination directory
     symlinks.each do |files, dest|
