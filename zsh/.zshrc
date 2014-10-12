@@ -14,9 +14,6 @@ bindkey '\e[A' history-beginning-search-backward
 bindkey '\eOB' history-beginning-search-forward
 bindkey '\e[B' history-beginning-search-forward
 
-# Fuzzy tab completion
-zstyle ':completion:*' matcher-list 'r:[[:ascii:]]||[[:ascii:]]=** r:|=* m:{a-z\-}={A-Z\_}'
-
 # Enable line comments
 setopt interactivecomments
 
