@@ -30,6 +30,9 @@ set noswapfile
 
 " don't wrap lines
 set nowrap
+
+" don't use octal incrementing
+set nrformats=hex
  
 " pane-switching shortcuts
 map <C-j> <C-W>j
