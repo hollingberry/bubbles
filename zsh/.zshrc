@@ -17,6 +17,11 @@ bindkey '\e[B' history-beginning-search-forward
 # Enable line comments
 setopt interactivecomments
 
+# Quick clear
+alias c='clear'
+alias cl='clear'
+alias cls='clear'
+
 # Safe rm (move to .Trash)
 alias rm='trash'
 
