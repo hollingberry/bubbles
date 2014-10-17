@@ -33,6 +33,10 @@ set nowrap
 
 " don't use octal incrementing
 set nrformats=hex
+
+" better new split positioning
+set splitbelow
+set splitright
  
 " pane-switching shortcuts
 map <C-j> <C-W>j
