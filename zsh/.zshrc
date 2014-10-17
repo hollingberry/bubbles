@@ -47,11 +47,6 @@ function hideall {
   defaults write com.apple.finder AppleShowAllFiles NO
 }
 
-# Clear the terminal (using command+k)
-function clear {
-  osascript -e 'tell application "System Events" to keystroke "k" using command down'
-}
-
 # Launch the iOS Simulator
 function emulator {
   open "/Applications/Xcode.app/Contents/Developer/Applications/iOS Simulator.app"
