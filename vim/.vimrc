@@ -37,7 +37,7 @@ set nrformats=hex
 " better new split positioning
 set splitbelow
 set splitright
- 
+
 " pane-switching shortcuts
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -78,3 +78,6 @@ set timeout timeoutlen=1000 ttimeoutlen=30
 
 " dim tildes on blank lines
 highlight NonText ctermfg=0
+
+" ignore generated files in ctrlp
+let g:ctrlp_custom_ignore = '\v[\/]((\.(git|hg|svn|yardoc))|coverage|doc|pkg)'
