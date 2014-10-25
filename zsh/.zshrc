@@ -7,6 +7,7 @@ source $ZSH/oh-my-zsh.sh
 # Vim line navigation
 bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
+bindkey "^?" backward-delete-char
 
 # Search history matching entered text
 bindkey '\eOA' history-beginning-search-backward
