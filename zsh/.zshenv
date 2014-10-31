@@ -5,8 +5,9 @@ export PATH=$PATH:$HOME/.cabal/bin
 export PATH=$PATH:/usr/local/heroku/bin
 export PATH=$PATH:/usr/local/opt/php55/bin
 
-# Make sure Homebrew executables are loaded first
+# Load Homebrew executables
 export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/sbin:$PATH
 
 # Set editor to vim
 export EDITOR=vim
