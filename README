@@ -1,6 +1,10 @@
 dotfiles
 ========
 
+A collection of miscellaneous configuration files for things like vim and zsh.
+Includes a small Rakefile to create symlinks to the dotfiles in the home
+directory. Inspired by @holman's collection of dotfiles.
+
 These are my dotfiles. You probably don't want to use them.
 
 INSTALLATION
