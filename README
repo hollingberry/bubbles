@@ -1,0 +1,21 @@
+dotfiles
+========
+
+These are my dotfiles. You probably don't want to use them.
+
+INSTALLATION
+------------
+
+Clone the repo into some folder and run:
+
+  rake symlinks:update
+
+This will symlink any dotfile in the repo to $HOME and move other files where
+they should go. You can configure the symlinking process in the Rakefile.
+
+If you want to wipe all of the symlinks, run:
+
+  rake symlinks:clean
+
+This will remove all the symlinks on your system that were created by the
+previous command.
