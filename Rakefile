@@ -30,8 +30,9 @@ end
 def symlinks
   {
     Dir['**/.*'].select { |file| File.file? file } => ENV['HOME'],
-    Dir['zsh/themes/*.zsh-theme'] => "#{ENV['HOME']}/.oh-my-zsh/custom",
-    Dir['js/*.js'] => "#{ENV['HOME']}/.js"
+    Dir['js/*.js'] => "#{ENV['HOME']}/.js",
+    Dir['ruby/bundle/*'] => "#{ENV['HOME']}/.bundle",
+    Dir['zsh/themes/*.zsh-theme'] => "#{ENV['HOME']}/.oh-my-zsh/custom"
   }
 end
 
