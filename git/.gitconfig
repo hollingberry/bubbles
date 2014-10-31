@@ -1,0 +1,25 @@
+[color]
+	ui = true
+[user]
+	name = Casper Hollingberry
+	email = hollingberry7@gmail.com
+[push]
+	default = matching
+[core]
+	excludesfile = ~/.gitignore
+	editor = /usr/local/bin/vim
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[github]
+	user = hollingberry
+[alias]
+	co = checkout
+	lg = log
+	br = branch
+	c = commit
+	st = status
+	r = reset
+[receive]
+	denyNonFastForwards = true
