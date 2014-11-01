@@ -15,7 +15,8 @@ Clone the repo into some folder and run:
   rake symlinks:update
 
 This will symlink any dotfile in the repo to $HOME and move other files where
-they should go. You can configure the symlinking process in the Rakefile.
+they should go. You can configure which files are symlinked into which
+directories in the symlinks.yml file.
 
 If you want to wipe all of the symlinks, run:
 

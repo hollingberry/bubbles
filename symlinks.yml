@@ -1,0 +1,4 @@
+'**/.*': '~'
+js/*.js: ~/.js
+ruby/bundle/*: ~/.bundle
+zsh/themes/*.zsh-theme: ~/.oh-my-zsh/custom

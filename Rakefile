@@ -1,3 +1,5 @@
+require 'yaml'
+
 task :default => 'symlinks:update'
 
 namespace :symlinks do
@@ -28,11 +30,12 @@ namespace :symlinks do
 end
 
 def symlinks
-  {
-    Dir['**/.*'].select { |file| File.file? file } => ENV['HOME'],
-    Dir['js/*.js'] => "#{ENV['HOME']}/.js",
-    Dir['ruby/bundle/*'] => "#{ENV['HOME']}/.bundle",
-    Dir['zsh/themes/*.zsh-theme'] => "#{ENV['HOME']}/.oh-my-zsh/custom"
-  }
+  symlinks = YAML.load_file('symlinks.yml')
+  symlinks.dup.each do |src, dest|
+    files = Dir[src].select { |file| File.file? file }
+    dest = File.expand_path(dest)
+    symlinks[files] = dest
+    symlinks.delete(src)
+  end
+  symlinks
 end
-
