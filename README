@@ -16,7 +16,7 @@ Clone the repo into some folder and run:
 
 This will symlink any dotfile in the repo to $HOME and move other files where
 they should go. You can configure which files are symlinked into which
-directories in the symlinks.yml file.
+directories by editing the symlinks.yml file.
 
 If you want to wipe all of the symlinks, run:
 
