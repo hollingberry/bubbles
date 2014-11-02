@@ -69,6 +69,9 @@ set copyindent
 " allow mouse navigation
 set mouse=a
 
+" copy/paste to system clipboard
+set clipboard=unnamed
+
 " search settings
 set ignorecase
 set smartcase
