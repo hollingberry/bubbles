@@ -3,20 +3,18 @@ require 'yaml'
 Rake::FileUtilsExt.verbose(false)
 
 desc 'Install the dotfiles on your system'
-task :install => [:clean, :symlinks]
+task :install => :clean do
+  Helpers.symlinks.each do |file, dest|
+    ln_s File.expand_path(file), "#{dest}/#{File.basename(file)}"
+  end
+  puts "Okay, created #{Helpers.symlinks.length} symlinks."
+end
 
 desc 'Remove the dotfiles from your system'
 task :clean do
   Helpers.symlinks.each do |file, dest|
     Helpers.remove "#{dest}/#{File.basename(file)}"
   end
-end
-
-task :symlinks do
-  Helpers.symlinks.each do |file, dest|
-    ln_s File.expand_path(file), "#{dest}/#{File.basename(file)}"
-  end
-  puts "Okay, created #{Helpers.symlinks.length} symlinks."
 end
 
 module Helpers
