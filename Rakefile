@@ -24,8 +24,8 @@ module Helpers
     @symlinks ||= begin
       symlinks = {}
       YAML.load_file('symlinks.yml').each_pair do |pattern, dest|
-        files_for_glob(pattern).each do |file|
-          symlinks[file] = File.expand_path(dest)
+        Dir[pattern].each do |file|
+          symlinks[file] = File.expand_path(dest) if File.file?(file)
         end
       end
       symlinks
@@ -44,10 +44,6 @@ module Helpers
       end
     end
     FileUtils.rm path, force: true
-  end
-
-  def files_for_glob(pattern)
-    Dir[pattern].select { |file| File.file? file }
   end
 
   def confirm(message)
