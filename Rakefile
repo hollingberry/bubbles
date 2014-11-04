@@ -1,9 +1,10 @@
 require 'yaml'
 
-task :update => [:clean, :install]
-
 desc 'Install the dotfiles on your system'
-task :install do
+task :install => [:clean, :symlink]
+
+desc 'Create symlinks pointing to the dotfiles'
+task :symlink do
   # Symlink each file to its associated destination directory
   symlinks.each do |files, dest|
     files.each do |file|
