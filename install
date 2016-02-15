@@ -5,12 +5,12 @@ ln=ln
 rm=rm
 
 install() { # create symlinks in $HOME pointing to these dotfiles
-  find $(pwd)/\.* -depth 0 |
-  sed '/\/\.$/d' |
-  sed '/\/\..$/d' |
-  sed '/\/\.git$/d' |
-  sed '/\/\.gitmodules$/d' |
-  sed '/\/\.DS_Store$/d' |
+  find $(pwd)/\.* -depth 0 \
+    -not -name '.' \
+    -not -name '..' \
+    -not -name '.git' \
+    -not -name '.gitmodules' \
+    -not -name '.DS_Store' |
   while read src; do
     diff $src $HOME/$(basename $src) &>/dev/null
     case $? in
