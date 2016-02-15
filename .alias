@@ -1,0 +1,30 @@
+alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
+
+alias cask='brew cask'
+
+alias cls=clear
+
+alias gbr='git browse'
+alias gf='git fuzzy'
+alias gfa='git fuzzy add'
+
+alias SANDBOX_OPTS="-no-user-package-db -package-db .cabal-sandbox/*-packages.conf.d"
+alias ghc-sandbox="ghc $SANDBOX_OPTS"
+alias ghci-sandbox="ghci $SANDBOX_OPTS"
+alias runhaskell-sandbox="runhaskell $SANDBOX_OPTS"
+
+alias git=hub
+alias glg='git log --stat'
+
+alias l='ls -lh --almost-all'
+alias ls='ls --color=auto --group-directories-first'
+
+alias :q=exit
+alias quit=exit
+
+alias rm=trash
+
+alias sudo='sudo '
+
+alias vi='nvim'
+alias vim='nvim'
