@@ -13,7 +13,24 @@ syntax enable
 " dark background
 set t_Co=256
 set background=dark
+
+" i like this one
 colorscheme delek
+
+" simple light gray highlight
+hi Visual cterm=NONE ctermbg=254
+
+" hide tildes on blank lines
+highlight NonText ctermfg=15
+
+" hide pipes in vertical split divider
+highlight VertSplit ctermbg=0 ctermfg=0
+
+" purple autocomplete menu
+hi Pmenu ctermbg=12
+
+" alphabetical autocomplete listing
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " show line numbers
 set number
@@ -66,12 +83,6 @@ set smartcase
 " wait 300ms on mappings
 set timeout timeoutlen=600
 
-" hide tildes on blank lines
-highlight NonText ctermfg=8
-
-" hide pipes in vertical split divider
-highlight VertSplit ctermbg=0 ctermfg=0
-
 " ala spacemacs
 let mapleader="\<Space>"
 
@@ -81,11 +92,15 @@ let g:netrw_liststyle=3
 " hide the info banner
 let g:netrw_banner=0
 
+" omnifunc autocompletion
+set omnifunc=syntaxcomplete#Complete
+
+" merlin autocompletion for OCaml
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+
 " quick escape
 inoremap jj <esc>
-
-" tab complete
-inoremap <Tab> <C-P>
 
 " b is for buffer
 nnoremap <Leader>bd :bd<CR>
@@ -97,6 +112,7 @@ nnoremap <leader>bs :buffers<CR>
 nnoremap <Leader>fs :w<CR>
 nnoremap <Leader>fS :wa<CR>
 nnoremap <Leader>fq :q<CR>
+nnoremap <Leader>fQ :q!<CR>
 
 " p is for project
 nnoremap <Leader>pt :Explore<CR>
