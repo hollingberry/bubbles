@@ -4,7 +4,7 @@ PATH=/bin:/usr/bin
 ln=ln
 rm=rm
 
-install() { # create symlinks in $HOME pointing to these dotfiles
+install() {
   find $(pwd)/\.* -depth 0 \
     -not -name '.' \
     -not -name '..' \
@@ -21,7 +21,7 @@ install() { # create symlinks in $HOME pointing to these dotfiles
   done
 }
 
-uninstall() { # delete all symlinks in $HOME that point to this directory
+uninstall() {
   ls -Al $HOME |
   grep '\->' |
   grep $(dirname $0) |
