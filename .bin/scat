@@ -1,0 +1,14 @@
+#!/bin/sh
+# scat - print a script in $PATH
+
+case $* in
+  '')   echo "usage: scat <command>" >&2
+        exit 2;;
+  *-a*) cmd="which -a $(echo $* | sed 's/-a//')";;
+  *)    cmd="which $*";;
+esac
+
+for file in $($cmd)
+do
+  $PAGER $file
+done

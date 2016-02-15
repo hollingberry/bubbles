@@ -1,0 +1,47 @@
+#!/bin/bash
+
+PATH=/bin:/usr/bin
+ln=ln
+rm=rm
+
+install() { # create symlinks in $HOME pointing to these dotfiles
+  find $(pwd)/\.* -depth 0 |
+  sed '/\/\.$/d' |
+  sed '/\/\..$/d' |
+  sed '/\/\.git$/d' |
+  sed '/\/\.gitmodules$/d' |
+  sed '/\/\.DS_Store$/d' |
+  while read src; do
+    diff $src $HOME/$(basename $src) &>/dev/null
+    case $? in
+      0) $ln -sf $src $HOME;; # identical -> force
+      1) $ln -si $src $HOME;; # different -> ask
+      2) $ln -s  $src $HOME;; # not found -> do
+    esac
+  done
+}
+
+uninstall() { # delete all symlinks in $HOME that point to this directory
+  ls -Al $HOME |
+  grep '\->' |
+  grep $(dirname $0) |
+  awk '{print $9}' |
+  while read symlink; do
+    $rm -rf $HOME/$symlink
+  done
+}
+
+while getopts :du opt; do
+  case $opt in
+    d) ln='echo ln'
+       rm='echo rm';;
+    u) uninstall=1;;
+    ?) echo "Usage: $0 [-du]" >&2
+       exit 2;;
+   esac
+done
+
+case $uninstall in
+  1) uninstall;;
+  *) install;;
+esac

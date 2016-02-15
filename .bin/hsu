@@ -1,0 +1,38 @@
+#!/bin/sh
+# hsu - login to a database with HSU's subscription
+
+usage() {
+  echo "usage: hsu <database|url>" >&2
+  exit 2
+}
+
+error() {
+  echo "hsu: $1" >&2
+  exit 1
+}
+
+status() {
+  curl -sI $1 |
+  head -n 1 |
+  field 2
+}
+
+proxify() {
+  echo $1 |
+  sed 's#http://##' |
+  awk '{ sub(/\//, ".ezproxy.humboldt.edu&") } 1' |
+  sed 's#^#http://#'
+}
+
+if [ $# != 1 ]
+then
+  usage
+fi
+
+case $1 in
+  http://*) url=$(proxify $1)
+            open $url;;
+         *) url="http://library.humboldt.edu/infoservices/restricted/$1.cgi"
+            if [ `status $url` != 302 ]; then error "$1 not found"; fi
+            open $url;;
+esac

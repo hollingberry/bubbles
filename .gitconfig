@@ -1,0 +1,36 @@
+[color]
+	ui = true
+[user]
+	name = Casper Hollingberry
+	email = hollingberry7@gmail.com
+[push]
+	default = matching
+[core]
+	excludesfile = ~/.gitignore
+	editor = /usr/local/bin/nvim
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[github]
+	user = hollingberry
+[alias]
+	co = checkout
+	lg = log
+	br = branch
+	c = commit
+	st = status
+	r = reset
+[receive]
+	denyNonFastForwards = true
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[grep]
+	extendRegexp = true
+	lineNumber = true

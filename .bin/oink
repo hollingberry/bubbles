@@ -1,0 +1,13 @@
+#!/bin/bash
+# oink - find order in chaos (words in random bytes)
+
+export LC_ALL='C'
+
+if [ $# -ne 1 ] 
+then 
+  echo "Usage: oink <seconds>"
+  exit 2
+fi
+
+timeout "$1" cat /dev/random | strings | sort | uniq > /tmp/words
+cat /tmp/words /usr/share/dict/words | sort | uniq -d

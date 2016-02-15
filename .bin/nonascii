@@ -1,0 +1,9 @@
+#!/bin/bash
+# nonascii - grep for non-ASCII characters
+
+LC_ALL=C grep '[^ -~]' --color=auto
+
+case $? in
+  0) exit 1;;
+  1) exit 0;;
+esac

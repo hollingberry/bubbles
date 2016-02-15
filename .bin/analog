@@ -1,0 +1,54 @@
+#!/bin/bash
+# analog - replace Unicode characters with ASCII analogues
+
+LEFT_SINGLE_QUOTE=\'
+RIGHT_SINGLE_QUOTE=\'
+LEFT_DOUBLE_QUOTE=\"
+RIGHT_DOUBLE_QUOTE=\"
+EM_DASH="---"
+EN_DASH="--"
+ELLIPSIS="..."
+NO_BREAK_SPACE=" "
+DOLLAR="$"
+
+while getopts :rT opt
+do
+  case $opt in
+     r) reverse=true;;
+     T) LEFT_SINGLE_QUOTE=\`
+        RIGHT_SINGLE_QUOTE=\'
+        LEFT_DOUBLE_QUOTE="\`\`"
+        RIGHT_DOUBLE_QUOTE="''"
+        NO_BREAK_SPACE=\~
+        DOLLAR="\\$";;
+    \?) echo "analog: invalid option -$OPTARG"
+        exit 1;;
+  esac
+  shift
+done
+
+if [ reverse = true ]
+then
+  cat "$@" |
+  sed "s/$LEFT_SINGLE_QUOTE/‘/g" |
+  sed "s/$RIGHT_SINGLE_QUOTE/’/g" |
+  sed "s/$LEFT_DOUBLE_QUOTE/“/g" |
+  sed "s/$RIGHT_DOUBLE_QUOTE/”/g" |
+  sed "s/$EM_DASH/—/g" |
+  sed "s/$EN_DASH/–/g" |
+  sed "s/$ELLIPSIS/…/g" |
+  sed "s/$NO_BREAK_SPACE/ /g" |
+  sed "s/$DOLLAR/\\$/g"
+else
+  cat "$@" |
+  sed "s/‘/$LEFT_SINGLE_QUOTE/g" |
+  sed "s/’/$RIGHT_SINGLE_QUOTE/g" |
+  sed "s/“/$LEFT_DOUBLE_QUOTE/g" |
+  sed "s/”/$RIGHT_DOUBLE_QUOTE/g" |
+  sed "s/—/$EM_DASH/g" |
+  sed "s/–/$EN_DASH/g" |
+  sed "s/…/$ELLIPSIS/g" |
+  sed "s/ /$NO_BREAK_SPACE/g" |
+  sed "s/\\$/$DOLLAR/g" |
+  iconv -c -f utf-8 -t ascii//TRANSLIT
+fi

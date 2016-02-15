@@ -1,0 +1,13 @@
+#!/bin/sh
+# night - sleep after a while
+
+case $@ in
+  *--help*) echo "Usage: night [seconds]"
+            exit 2;;
+esac
+
+trap "" 1 15
+
+(sleep ${1:-3600} >/dev/null && pmset sleepnow >/dev/null) &
+
+echo "Good night!"

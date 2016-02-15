@@ -1,0 +1,17 @@
+:t const
+:t y
+fac 100
+fac 3
+fac 2
+fac 1
+fac 4
+:t fac
+let fac = y (\f n -> if (n==0) then 1 else n * f (n-1))
+let y f = f (y f)
+:t factorial 
+factorial 10000
+let factorial n = if n < 2 then 1 else n * factorial (n-1)
+rotate 5 [1..100000]
+rotate 2 [1..5]
+let rotate n xs = zipWith const (drop n (cycle xs)) xs
+let rotate _ [] = []

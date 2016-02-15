@@ -1,0 +1,10 @@
+#!/bin/sh
+# man - man wrapper with -x flag for fancy typesetting
+
+case $* in
+  *-x*) args=$(echo $* | sed 's/-x//')
+        tmpfile=$(mktemp /tmp/man.XXXXXX).pdf
+        man -t $args | ps2pdf - $tmpfile
+        open $tmpfile;;
+  *)    exec /usr/bin/man $*;;
+esac

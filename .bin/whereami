@@ -1,0 +1,5 @@
+#!/bin/sh
+# whereami - list private and public IP addresses
+
+ifconfig | grep 'inet ' | field 2 | tail -1 # private ip
+dig +short myip.opendns.com @resolver1.opendns.com # public ip
