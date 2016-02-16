@@ -9,6 +9,10 @@ bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
 bindkey "^?" backward-delete-char
 
+# ala less
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 # Search history matching entered text
 bindkey '\eOA' history-beginning-search-backward
 bindkey '\e[A' history-beginning-search-backward
