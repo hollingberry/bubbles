@@ -1,3 +1,7 @@
-// bypass obnoxious download delay
-if (elem = document.getElementById('sm_dl_wait'))
-  window.location = elem.getAttribute('data-id');
+'use strict';
+
+var delayedLink = document.getElementById('sm_dl_wait');
+
+if (delayedLink !== null) {
+  window.location = delayedLink.getAttribute('data-id');
+}
