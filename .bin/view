@@ -1,0 +1,10 @@
+#!/bin/bash
+# view - view file in plaintext in $PAGER
+
+for file
+do
+  textutil -convert txt -stdout "$file" |
+  (cat; echo) | # append newline
+  fold -w 80 -s |
+  less
+done
