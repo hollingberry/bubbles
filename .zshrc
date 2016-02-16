@@ -19,6 +19,9 @@ bindkey '\e[A' history-beginning-search-backward
 bindkey '\eOB' history-beginning-search-forward
 bindkey '\e[B' history-beginning-search-forward
 
+# adieu godawful pipe pipe pipe
+export PS2=''
+
 # Enable line comments
 setopt interactivecomments
 
