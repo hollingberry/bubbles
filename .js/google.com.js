@@ -1,20 +1,17 @@
 'use strict';
 
-function isResult(a) {
-  return (a.href !== null) && (a.pathname == '/url');
-}
-
 function noTrack(a) {
+  a.removeAttribute("onmousedown");
+  a.removeAttribute("data-ctbtn");
+  a.removeAttribute("data-cthref");
   var match = a.search.match(/url=([^&#]*)/);
   if (match !== null && match[1] !== null) {
-    a.href = decodeURI(match[1]);
+    a.href = decodeURIComponent(match[1]);
   }
 }
 
-NodeList.prototype.filter  = Array.prototype.filter;
 NodeList.prototype.forEach = Array.prototype.forEach;
 
 document
   .getElementsByTagName('a')
-  .filter(isResult)
   .forEach(noTrack);
