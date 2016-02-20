@@ -20,6 +20,10 @@ export GOPATH=$HOME/dev/go
 export PATH=$GOPATH/bin:$PATH
 export PATH=`go env GOROOT`:$PATH
 
+# watch out sr. amaro
+export PAGER="less"
+export LESS="-R"
+
 # Set editor to nvim
 export EDITOR=nvim
 
