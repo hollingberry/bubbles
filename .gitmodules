@@ -4,3 +4,6 @@
 [submodule ".nvim/bundle/supertab"]
 	path = .nvim/bundle/supertab
 	url = https://github.com/ervandew/supertab
+[submodule ".nvim/bundle/nim.vim"]
+	path = .nvim/bundle/nim.vim
+	url = https://github.com/zah/nim.vim
