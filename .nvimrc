@@ -83,6 +83,9 @@ set smartcase
 " wait 300ms on mappings
 set timeout timeoutlen=600
 
+" give us our welcome nada
+set shortmess+=I
+
 " ala spacemacs
 let mapleader="\<Space>"
 
