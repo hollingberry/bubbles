@@ -10,5 +10,10 @@ esac
 
 for file in $($cmd)
 do
-  $PAGER $file
+  if [ -t 1 ] # stdout is a terminal
+  then
+    $PAGER $file
+  else
+    cat $file
+  fi
 done
