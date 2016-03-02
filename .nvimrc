@@ -10,27 +10,14 @@ filetype plugin indent on
 " syntax highlighting
 syntax enable
 
-" dark background
+" better colors
 set t_Co=256
-set background=dark
 
-" i like this one
-colorscheme delek
-
-" simple light gray highlight
-hi Visual cterm=NONE ctermbg=254
-
-" hide tildes on blank lines
-highlight NonText ctermfg=15
-
-" hide pipes in vertical split divider
-highlight VertSplit ctermbg=0 ctermfg=0
-
-" purple autocomplete menu
-hi Pmenu ctermbg=12
 
 " alphabetical autocomplete listing
 let g:SuperTabDefaultCompletionType = "<c-n>"
+" quite a woman
+colorscheme darkbloom
 
 " show line numbers
 set number
