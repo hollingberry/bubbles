@@ -13,9 +13,6 @@ syntax enable
 " better colors
 set t_Co=256
 
-
-" alphabetical autocomplete listing
-let g:SuperTabDefaultCompletionType = "<c-n>"
 " quite a woman
 colorscheme darkbloom
 
@@ -73,24 +70,11 @@ set timeout timeoutlen=600
 " give us our welcome nada
 set shortmess+=I
 
-" ala spacemacs
-let mapleader="\<Space>"
-
-" display files as a tree
-let g:netrw_liststyle=3
-
-" hide the info banner
-let g:netrw_banner=0
-
-" don't leave .netrwhist craps
-let g:netrw_dirhistmax = 0
-
 " omnifunc autocompletion
 set omnifunc=syntaxcomplete#Complete
 
-" merlin autocompletion for OCaml
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
+" ala spacemacs
+let mapleader="\<Space>"
 
 " quick escape
 inoremap jj <esc>
