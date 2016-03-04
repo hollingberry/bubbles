@@ -1,0 +1,13 @@
+#!/bin/bash
+# marco - list network devices with manufacturer name
+
+netstat -r |
+awk '$2 ~ /:/' |
+while read row
+do
+  ip=$(echo $row | field 1)
+  addr=$(echo $row | field 2)
+  manufacturer=$(oui $addr | awk '{$1=""; print $0}')
+  printf "%s|%s\n" $ip "$manufacturer"
+done |
+column -s'|' -t
