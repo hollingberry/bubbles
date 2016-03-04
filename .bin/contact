@@ -1,0 +1,34 @@
+#!/bin/bash
+# contact - whitepages for domain name registrants (à la whois)
+
+# prints the domain name of the uri
+# for example, the following prints "theguardian.co.uk":
+# `echo "http://www.theguardian.co.uk/music/pulp-favourite-lyrics" | domain'
+domain() {
+  read uri # necessary b/c can't read stdin twice
+  grep -q '//' <<< $uri
+  case $? in
+    0) cut -d/ -f3 <<< $uri;; # has http:// -> 3rd
+    *) cut -d/ -f1 <<< $uri;; # does not -> 1st
+  esac
+}
+
+# prints the last n labels of the hostname
+# for example, the following prints "theguardian.com":
+# `echo "www.theguardian.com" | labels 2'
+labels() {
+  rev |
+  cut -d. -f "-$1" |
+  rev
+}
+
+name=$(echo $1 | domain | labels 2)
+
+whois "$name" |
+awk -F': ' '
+  $1 !~ /Registrant/              { next }
+  $1  ~ /Name|Street|Phone|Email/ { print $2 }
+  $1  ~ /City/                    { printf("%s", $2) }
+  $1  ~ /State/                   { printf(", %s", $2) }
+  $1  ~ /Postal Code/             { printf(" %s\n", $2) }' |
+sed '/^$/d'
