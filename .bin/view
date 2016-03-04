@@ -6,5 +6,5 @@ do
   textutil -convert txt -stdout "$file" |
   (cat; echo) | # append newline
   fold -w 80 -s |
-  less
+  $PAGER
 done
