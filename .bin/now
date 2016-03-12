@@ -1,0 +1,4 @@
+#!/bin/bash
+# now - what time is it?
+
+date +%r
