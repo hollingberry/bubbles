@@ -1,0 +1,6 @@
+#!/bin/bash
+# ring - a better bell
+
+sound=/System/Library/Sounds/Glass.aiff
+
+[ -f $sound ] && afplay $sound &
