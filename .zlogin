@@ -1,1 +1,1 @@
-fortune
+fortune | tee ~/.fortune

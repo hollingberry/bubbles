@@ -1,0 +1,5 @@
+#!/bin/bash
+# save - add the fortune in ~/.fortune to ~/.fortunes
+
+cat ~/.fortune >> ~/.fortunes
+echo "%%" >> ~/.fortunes
